@@ -161,7 +161,7 @@
 	<!-- Assets -->
 	<assets path="assets/fonts" />
 	<assets path="assets/mobile" rename="assets/shared/mobile" if="TOUCH_CONTROLS_ALLOWED" />
-	<assets path="assets/videos" if="VIDEOS_ALLOWED" />
+	<assets path="assets/videos" if="VIDEOS_ALLOWED" embed="false"/>
 
 	<assets path="assets/shared" unless="web" />
 	<assets path="assets/shared" if="web" embed="true" />

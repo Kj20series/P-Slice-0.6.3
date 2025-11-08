@@ -70,6 +70,9 @@
 	<!-- Do we want to use ATSC compression?-->
 	<define name="ATSC_SUPPORT" unless="web"/>
 
+	<!-- Enables special crash handler in case you don't trust your players to report issues properly-->
+	<define name="FIREBASE_CRASH_HANDLER" unless="android"/>
+
 	<!-- Displays a "Touch here to play" screen-->
 	<define name="TOUCH_HERE_TO_PLAY" if="TOUCH_CONTROLS_ALLOWED debug" />
 
@@ -224,6 +227,7 @@
 	<haxelib name="hxcpp" />
 	<haxelib name="extension-haptics" if="mobile" />
 	<haxelib name="extension-androidtools" if="android" />
+	<haxelib name="firebase" if="FIREBASE_CRASH_HANDLER" />
 	<haxelib name="tjson" version="1.4.0" />
 	<haxelib name="grig.audio" />
 	<haxelib name="funkin.vis" />
@@ -358,6 +362,10 @@
 	<haxedef name="hscriptPos" if="HSCRIPT_ALLOWED" />
 
 	<!-- _________________________________ Custom _______________________________ -->
+
+	<section if="FIREBASE_CRASH_HANDLER">
+		<template path="setup/google-services.json" rename="app/google-services.json"/>
+	</section>
 
 	<section if="PROFILE_BUILD">
 		<assets path='art/desktop/icon16.png' rename='icon.png' if="linux" />

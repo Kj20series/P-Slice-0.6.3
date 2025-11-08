@@ -22,8 +22,8 @@ class MasterEditorMenu extends MusicBeatState
 		'Dialogue Editor', 
 		'Dialogue Portrait Editor',
 		'Player editor',
-		#if PROFILE_BUILD
 		'Crash the game',
+		#if PROFILE_BUILD
 		'Usermess the game',
 		#end
 		'Note Splash Editor', 
@@ -123,15 +123,11 @@ class MasterEditorMenu extends MusicBeatState
 					MusicBeatState.switchState(new StickerTest());
 				case 'Player editor':
 					MusicBeatState.switchState(new CharSelectEditor());
-				#if PROFILE_BUILD
 				case 'Crash the game':{
-					trace("Break the the StackOverflow.com");
-					var fnc = null;
-					fnc = () -> {
-						fnc();
-					}
-					fnc();
+					trace("Break the StackOverflow.com");
+					untyped __cpp__("throw \"This is a native C++ exception!\";");
 				}
+				#if PROFILE_BUILD
 				case 'Usermess the game':{
 					UserErrorSubstate.makeMessage("The devs are too stupid and they write way too long errors","Skill issue :/");
 				}

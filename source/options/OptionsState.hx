@@ -19,6 +19,7 @@ class OptionsState extends MusicBeatState
 		'Visuals',
 		'Gameplay',
 		'P-Slice Options',
+		'V-Slice Options',
 		#if TRANSLATIONS_ALLOWED  'Language', #end
 		#if (TOUCH_CONTROLS_ALLOWED || mobile)'Mobile Options' #end
 	];
@@ -61,7 +62,9 @@ class OptionsState extends MusicBeatState
 			case 'Adjust Delay and Combo':
 				MusicBeatState.switchState(new options.NoteOffsetState());
 			case 'P-Slice Options':
-				openSubState(new BaseGameSubState());
+				openSubState(new PSliceSubState());
+			case 'V-Slice Options':
+				openSubState(new VSliceSubState());
 			#if (TOUCH_CONTROLS_ALLOWED || mobile)
 			case 'Mobile Options':
 				openSubState(new mobile.options.MobileOptionsSubState());

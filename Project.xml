@@ -229,9 +229,9 @@
 	<haxelib name="extension-haptics" if="mobile" />
 	<haxelib name="extension-androidtools" if="android" />
 	<section if="FIREBASE_CRASH_HANDLER">
+		<define name="NO_FIREBASE_ANDROID_PATCHES" />
 		<haxelib name="extension-firebase-crashlytics" />
 		<config:android pslice-firebase-sdk-path="yes" />
-		<define name="NO_FIREBASE_ANDROID_PATCHES" />
 	</section>
 	<haxelib name="tjson" version="1.4.0" />
 	<haxelib name="grig.audio" />

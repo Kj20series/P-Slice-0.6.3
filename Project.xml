@@ -229,6 +229,7 @@
 	<haxelib name="extension-haptics" if="mobile" />
 	<haxelib name="extension-androidtools" if="android" />
 	<section if="FIREBASE_CRASH_HANDLER">
+		<define name="NO_FIREBASE_ANDROID_PATCHES" />
 		<haxelib name="extension-firebase-crashlytics" />
 	</section>
 	<haxelib name="tjson" version="1.4.0" />
@@ -371,7 +372,6 @@
 		<config:android pslice-firebase-sdk-path="yes" />
 		<template path="setup/GoogleService-Info.plist" rename="GoogleService-Info.plist" if="ios"/>
 		<template path="setup/GoogleService-Info.plist" rename="../GoogleService-Info.plist" if="ios"/>
-		<define name="NO_FIREBASE_ANDROID_PATCHES" />
 	</section>
 
 	<section if="PROFILE_BUILD">

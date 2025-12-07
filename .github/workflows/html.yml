@@ -1,11 +1,13 @@
 name: Publish HTML version
 on:
   workflow_dispatch: 
+    
 
 env:
   HAXE_VERSION: 4.3.6
   PROJECT_NAME: PSliceEngine
-  cacheLibrariesPath: P-Slice.1.0.desktop-cache
+  cacheLibrariesPath: P-Slice.1.0.desktop-
+  PSLICE_HTML_UPLOAD_SSHKEY: ${{ secrets.PSLICE_HTML_UPLOAD_SSHKEY }}
 
 jobs:
   build:
@@ -38,11 +40,10 @@ jobs:
         run: haxelib run lime build html5
           # setup/google-services.json
       - name: Configure SSH key
-        env:
-          PLAYSTORE_FIREBASE: ${{ secrets.PSLICE_HTML_UPLOAD_SSHKEY }}
         run: |
-          umask 077
-          printf '%s' "$PLAYSTORE_FIREBASE" > ./ssh_key
+          umask 077;
+          echo $PSLICE_HTML_UPLOAD_SSHKEY | base64 -d > ./ssh_key;
+          sha256sum ./ssh_key;
       - name: Push to GitHub
         run: |
           cd ./export/release/html5/bin
